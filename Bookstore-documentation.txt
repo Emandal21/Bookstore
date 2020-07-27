@@ -1,0 +1,20 @@
+Bookstore desktop application:
+In ordder for this application to be functional, I have created 3 classes: MembersForm, BooksForm and bookstoreForm. 
+
+1. MembersForm() - this class is designed to add, update and delete members of a certain bookstore. It keeps basic information about members: first name, last name, address, city, country birthday, gender and phone number. It has following functions:
+	- addMember - in this function we first connect to database BookstoreDB in order to update its table 'Members'. We read the values that are inputed in the input boxes and add a member to the table with INSERT 	 	  query
+	- populateMembers - this function also has a connection to database BookstoreDB and after we connect to the database, using the SELECT query statement we get all the member from table 'Members' and add 	 	 them to list 'data' in order to populate them in tho Combo selMember.
+	- selectMember - this function updates input fields with the information (collected from the database) about the member that is selected in Combo selMember
+	- updateMember - this function serves to update the data in the database. It is similar to the addMember function, but here instead of creating a new member, by using 'UPDATE' statement it updates a record in the 	  database
+	- deleteMember - this function deletes a record from database with id that is read from the Combo selMember
+	- clearFields - this function updatees all input fields to mpty string
+
+2. BooksForm() - this class is designed to add, update and delete book that are kept in a certain bookstore. It keeps information about book like: title, author, publisher, genre (a dropdown with list of possible genres) and publishing year. It has following functions:
+	- addBook - similar as for members, in this function we first connect to database BookstoreDB in order to update its table 'Books'. We read the values that are inputed in the input boxes and add a book to the 	  table by using INSERT query
+	- populateBooks - this function also has a connection to database BookstoreDB and after we connect to the database, using the SELECT query statement we get all the books records from table 'Books' and add 	  	  them to list 'data' in order to populate them in tho Combo selBook.
+	- selectBooks - this function updates input fields with the information (collected from the database) about the book that has been selected in Combo selBook
+	- updateBook - this function serves to update the data in the database. As in updateMember function in MembersForm, by using 'UPDATE' statement it updates a record in the database
+	- deleteBook - this function deletes a record from database with id that is read from the Combo selBook
+	- clearFields - this function updatees all input fields to mpty string
+
+3. bookstoreForm() - this class serves to read, add, delete and update information about booking. Each booking is connecting one member with one book. Besides basic information about member (id - which references the one from 'Members' table, first name, last name ) and book (id - also reference id from table 'Books' and title) it also keeps information about the date when the member has borrowed a certain book and if it has beeen returned or not. The functions for adding, updating and deleting a certain booking are very similar to ones implemented in the classes MembersForm and BooksForm. When a user select a certain member, all his bookings are listed in the table. There are actions in menu: Member which opens MembersForm, Books which opens BooksForm, Actions that has two subactions - Pending booking (this action populates all bookings that have not yet been returne by selecting booking from the database that have 'returned' column set to False) and All Bookings (this action populates all bookings from the table 'Bookstore' in database 'BookstoreDB'); and Exit which closes the form. Member name and book title are not kept in the table Bookstore, but are read from tables Members and Books and added to the table in the form that is opened on bookstoreForm call.
